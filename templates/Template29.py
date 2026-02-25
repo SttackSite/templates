@@ -1,169 +1,179 @@
 import streamlit as st
 
 def render():
-    # --- CSS IPDV ONLINE STYLE ---
+    # --- CSS SUSTENTÁVEL STYLE ---
     st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&family=Inter:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Lora:italic,wght@0,400;1,500&display=swap');
 
         :root {
-            --ipdv-blue-dark: #0a192f;
-            --ipdv-blue-main: #00d2ff;
-            --ipdv-cyan: #00f2ff;
-            --ipdv-text-gray: #64748b;
-            --ipdv-bg-soft: #f8fafc;
+            --eco-green: #2d5a27;
+            --eco-light: #f0f4ef;
+            --eco-accent: #8eb486;
+            --eco-dark: #1a2e19;
+            --text-gray: #4a4a4a;
         }
 
         .stApp {
-            background-color: white;
-            color: var(--ipdv-blue-dark);
+            background-color: var(--eco-light);
+            color: var(--eco-dark);
         }
         
         [data-testid="stHeader"] { display: none; }
         .block-container { padding: 0 !important; max-width: 100% !important; }
 
-        /* Tipografia Sora (Moderna e Tech) */
+        /* Tipografia */
         html, body, [class*="css"] {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
         }
 
         h1, h2, h3 {
-            font-family: 'Sora', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 800;
-            color: var(--ipdv-blue-dark);
+            color: var(--eco-dark);
+            letter-spacing: -0.03em;
         }
 
-        /* Hero Section - Inteligência no PDV */
-        .hero-ipdv {
-            padding: 100px 10%;
-            background: linear-gradient(135deg, var(--ipdv-blue-dark) 0%, #112240 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 5px solid var(--ipdv-blue-main);
+        /* Hero - Natural & Tech */
+        .hero-eco {
+            padding: 120px 10%;
+            background: linear-gradient(180deg, #e4ede3 0%, var(--eco-light) 100%);
+            text-align: center;
+            border-bottom: 1px solid rgba(45, 90, 39, 0.1);
         }
 
-        .hero-ipdv h1 { color: white; font-size: clamp(32px, 5vw, 52px); line-height: 1.2; }
-        .ipdv-highlight { color: var(--ipdv-blue-main); }
+        .hero-h1 { 
+            font-size: clamp(34px, 6vw, 68px); 
+            line-height: 1;
+            margin-bottom: 25px;
+        }
 
-        /* Cards de Funcionalidades */
-        .ipdv-card {
+        .eco-italic {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--eco-green);
+        }
+
+        /* Cards Orgânicos */
+        .eco-card {
             background: white;
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.4s ease;
+            padding: 40px;
+            border-radius: 40px 10px 40px 10px; /* Bordas assimétricas orgânicas */
+            border: 1px solid rgba(142, 180, 134, 0.2);
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             height: 100%;
-            position: relative;
         }
 
-        .ipdv-card:hover {
+        .eco-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.1);
-            border-color: var(--ipdv-blue-main);
+            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.05);
+            border-color: var(--eco-green);
         }
 
-        .ipdv-icon {
-            font-size: 32px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        /* Botão iPDV (Estilo Dashboard) */
+        /* Botão Sustentável (Fiel ao original) */
         div.stButton > button {
-            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%) !important;
+            background-color: var(--eco-green) !important;
             color: white !important;
             border: none !important;
-            padding: 14px 35px !important;
-            font-family: 'Sora', sans-serif !important;
+            padding: 18px 45px !important;
+            font-family: 'Outfit', sans-serif !important;
             font-weight: 600 !important;
-            border-radius: 8px !important;
+            border-radius: 100px !important;
             transition: 0.3s !important;
-            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3) !important;
+            font-size: 16px !important;
         }
 
         div.stButton > button:hover {
-            transform: scale(1.03) !important;
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.5) !important;
+            background-color: var(--eco-dark) !important;
+            transform: scale(1.05) !important;
+            box-shadow: 0 10px 25px rgba(45, 90, 39, 0.2) !important;
         }
 
-        /* Faixa de Clientes */
-        .client-strip {
-            padding: 40px 10%;
-            background: var(--ipdv-bg-soft);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            opacity: 0.6;
-            filter: grayscale(100%);
+        /* Badge Carbono */
+        .carbon-badge {
+            display: inline-block;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 100px;
+            border: 1px solid var(--eco-green);
+            color: var(--eco-green);
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
     </style>
     """, unsafe_allow_html=True)
 
     # --- NAVEGAÇÃO ---
     st.markdown("""
-    <div style="padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #eee;">
-        <div style="font-weight: 800; font-size: 24px; color: var(--ipdv-blue-dark);">iPDV<span style="color:var(--ipdv-blue-main)">_</span>ONLINE</div>
-        <div style="display: flex; gap: 30px; font-weight: 600; font-size: 13px; color: var(--ipdv-text-gray);">
-            <span>PLATAFORMA</span>
-            <span>SOLUÇÕES</span>
-            <span>CASES</span>
-            <span style="color: var(--ipdv-blue-main)">SOLICITAR DEMO</span>
+    <div style="padding: 25px 10%; display: flex; justify-content: space-between; align-items: center; background: transparent;">
+        <div style="font-weight: 800; font-size: 22px; color: var(--eco-green); display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 30px;">🌿</span> Website Sustentável
+        </div>
+        <div style="display: flex; gap: 35px; font-weight: 500; font-size: 14px; color: var(--text-gray);">
+            <span>Manifesto</span>
+            <span>Certificação</span>
+            <span>Tecnologia</span>
+            <span style="color: var(--eco-green); font-weight: 800;">CONTATO</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
     # --- 1 & 2. HERO ---
     st.markdown("""
-    <div class="hero-ipdv">
-        <div style="max-width: 800px;">
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 14px; margin-bottom: 20px; color: var(--ipdv-cyan);">Trade Marketing Inteligente</p>
-            <h1>Sua operação de campo guiada por <span class="ipdv-highlight">dados em tempo real.</span></h1>
-            <p style="font-size: 18px; opacity: 0.8; margin: 30px 0 40px 0; line-height: 1.6;">
-                A plataforma completa para gestão de promotores, auditoria de estoque e execução perfeita no ponto de venda.
-            </p>
+    <div class="hero-eco">
+        <div class="carbon-badge">Otimizado para baixo consumo</div>
+        <h1 class="hero-h1">Seu site pode ser mais <span class="eco-italic">rápido</span> e menos <span class="eco-italic">poluente.</span></h1>
+        <p style="font-size: 19px; color: var(--text-gray); max-width: 750px; margin: 0 auto 40px auto; line-height: 1.6;">
+            Desenvolvemos tecnologias web focadas em performance extrema e responsabilidade ambiental. 
+            O futuro da internet é <b>sustentável</b>.
+        </p>
     """, unsafe_allow_html=True)
-    st.button("QUERO MODERNIZAR MEU PDV")
-    st.markdown("</div></div>", unsafe_allow_html=True)
-
-    # --- 3 & 4. CARDS DE FUNCIONALIDADES (GRID) ---
-    st.markdown('<div style="padding: 100px 10%;">', unsafe_allow_html=True)
-    st.markdown('<h2 style="text-align: center; margin-bottom: 60px;">Controle total da sua execução</h2>', unsafe_allow_html=True)
     
-    c1, c2, c3 = st.columns(3, gap="large")
+    c_btn1, c_btn2, c_btn3 = st.columns([1, 1.2, 1])
+    with c_btn2:
+        st.button("CERTIFIQUE SEU WEBSITE")
+    
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    def render_ipdv_card(col, title, desc, icon):
+    # --- 3 & 4. DIFERENCIAIS (GRID) ---
+    st.markdown('<div style="padding: 100px 10%;">', unsafe_allow_html=True)
+    st.markdown('<h2 style="text-align: center; margin-bottom: 60px;">Por que ser sustentável?</h2>', unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns(3, gap="large")
+
+    def render_eco_card(col, title, desc, icon):
         with col:
             st.markdown(f"""
-            <div class="ipdv-card">
-                <div class="ipdv-icon">{icon}</div>
-                <h3 style="font-size: 20px; margin-bottom: 15px;">{title}</h3>
-                <p style="color: var(--ipdv-text-gray); font-size: 14px; line-height: 1.6;">{desc}</p>
+            <div class="eco-card">
+                <div style="font-size: 40px; margin-bottom: 25px;">{icon}</div>
+                <h3 style="font-size: 22px; margin-bottom: 15px;">{title}</h3>
+                <p style="color: var(--text-gray); font-size: 15px; line-height: 1.7;">{desc}</p>
             </div>
             """, unsafe_allow_html=True)
 
-    render_ipdv_card(c1, "Check-in Geolocalizado", "Garanta que sua equipe esteja no lugar certo com validação via GPS e cercas digitais.", "📍")
-    render_ipdv_card(c2, "Auditoria de Ruptura", "Identifique falta de produtos na gôndola e acione o repasse imediatamente para não perder vendas.", "🛒")
-    render_ipdv_card(c3, "Pesquisas Customizadas", "Crie formulários inteligentes para coletar preços da concorrência e participação de mercado.", "📊")
+    render_eco_card(col1, "Baixa Emissão", "Reduzimos o tamanho dos arquivos e a requisição de servidores, diminuindo a pegada de carbono de cada acesso.", "🍃")
+    render_eco_card(col2, "SEO Consciente", "Sites mais leves carregam instantaneamente, o que o Google ama. Sustentabilidade é a melhor estratégia de ranking.", "🔍")
+    render_eco_card(col3, "Green Hosting", "Hospedagem em servidores alimentados por fontes de energia 100% renováveis e limpas.", "🔋")
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # --- 5. DASHBOARD PREVIEW ---
+    # --- 5. SEÇÃO DE IMPACTO ---
     st.markdown("""
-    <div style="background: var(--ipdv-bg-soft); padding: 100px 10%;">
-        <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px;">
-                <h2 style="font-size: 32px;"> dashboards que <span class="ipdv-highlight">falam.</span></h2>
-                <p style="color: var(--ipdv-text-gray); font-size: 16px; margin-top: 20px; line-height: 1.8;">
-                    Transforme fotos e formulários em indicadores de performance (KPIs). Acompanhe o ROI das suas ações de trade marketing em um painel intuitivo e potente.
-                </p>
-                <ul style="margin-top: 20px; color: var(--ipdv-blue-dark); font-weight: 500;">
-                    <li>✓ Análise de Share de Gôndola</li>
-                    <li>✓ Gestão de Alertas de Validade</li>
-                    <li>✓ Ranking de Performance de Equipe</li>
-                </ul>
+    <div style="background: var(--eco-green); color: white; padding: 100px 10%; border-radius: 0 100px 0 100px; margin: 0 5%;">
+        <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 50px;">
+            <div>
+                <h1 style="color: var(--eco-accent); font-size: 60px;">-40%</h1>
+                <p style="font-weight: 300; letter-spacing: 1px;">NA EMISSÃO DE CO2</p>
             </div>
-            <div style="flex: 1.2; min-width: 300px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.05);">
-                <img src="https://images.unsplash.com/photo-1551288049-bbda4865cda1?w=800" style="width: 100%; border-radius: 10px;">
+            <div>
+                <h1 style="color: var(--eco-accent); font-size: 60px;">2.5x</h1>
+                <p style="font-weight: 300; letter-spacing: 1px;">MAIS VELOCIDADE</p>
+            </div>
+            <div>
+                <h1 style="color: var(--eco-accent); font-size: 60px;">100%</h1>
+                <p style="font-weight: 300; letter-spacing: 1px;">ENERGIA LIMPA</p>
             </div>
         </div>
     </div>
@@ -171,22 +181,25 @@ def render():
 
     # --- 6. CTA FINAL ---
     st.markdown("""
-    <div style="padding: 100px 10%; text-align: center; background: var(--ipdv-blue-dark); color: white;">
-        <h2 style="color: white; font-size: 40px; margin-bottom: 25px;">Pronto para transformar sua execução?</h2>
-        <p style="opacity: 0.7; margin-bottom: 40px; font-size: 18px;">Agende uma demonstração gratuita com nossos especialistas em varejo.</p>
+    <div style="padding: 120px 10%; text-align: center;">
+        <h2 style="font-size: 40px; margin-bottom: 25px;">Pronto para o próximo passo?</h2>
+        <p style="color: var(--text-gray); margin-bottom: 45px; font-size: 18px;">Seja parte da mudança positiva no ecossistema digital.</p>
     """, unsafe_allow_html=True)
-    st.button("SOLICITAR DEMONSTRAÇÃO", key="ipdv_cta")
+    st.button("SOLICITAR ORÇAMENTO VERDE", key="final_eco_cta")
     st.markdown("</div>", unsafe_allow_html=True)
 
     # --- FOOTER ---
     st.markdown("""
-    <div style="padding: 40px 10%; background: white; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 12px; color: var(--ipdv-text-gray);">
-        <div>© 2026 iPDV Online - Tecnologia para o Varejo.</div>
-        <div>Siga-nos: LinkedIn / Instagram</div>
+    <div style="padding: 50px 10%; background: var(--eco-dark); color: white; display: flex; justify-content: space-between; font-size: 13px; opacity: 0.8;">
+        <div>© 2026 Website Sustentável. Tecnologia com Propósito.</div>
+        <div style="display: flex; gap: 30px;">
+            <span>Política de Privacidade</span>
+            <span>Eco-Design Guide</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
 # Execução direta
 if __name__ == "__main__":
-    st.set_page_config(layout="wide", page_title="iPDV | Inteligência de Campo")
+    st.set_page_config(layout="wide", page_title="Website Sustentável | Eco-Design")
     render()
