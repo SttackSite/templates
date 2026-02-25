@@ -2,259 +2,236 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Site Pro | Excellence in Design",
-    page_icon="⚖️",
+    page_title="Site Pro | Engenharia de Design",
+    page_icon="⚙️",
     layout="wide"
 )
 
-# --- CSS DE PRESTÍGIO (ESTILO LOCATELLI ADV) ---
+# --- CSS DE PRECISÃO (ESTILO BAUTZ) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400&display=swap');
 
     :root {
-        --primary-gold: #c5a059;
-        --navy-dark: #0a1128;
-        --soft-white: #fcfcfc;
-        --text-gray: #4a4a4a;
+        --bautz-black: #1a1a1a;
+        --bautz-gray: #f5f5f7;
+        --bautz-border: #e0e0e0;
+        --bautz-accent: #0047bb; /* Azul Técnico */
     }
 
     .stApp {
-        background-color: var(--soft-white);
-        color: var(--text-gray);
+        background-color: white;
+        color: var(--bautz-black);
     }
     
     [data-testid="stHeader"] { display: none; }
     .block-container { padding: 0 !important; max-width: 100% !important; }
 
-    /* Tipografia de Prestígio */
-    h1, h2, .title-font {
-        font-family: 'Cinzel', serif;
-        color: var(--navy-dark);
-        letter-spacing: 2px;
-        font-weight: 400;
-    }
-
-    .serif-body {
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
-        font-size: 22px;
-    }
-
-    /* 1 & 2. HERO - O MANIFESTO */
-    .hero-luxury {
-        height: 85vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
-                    url('https://www.transparenttextures.com/patterns/white-diamond.png');
-        border-bottom: 1px solid rgba(197, 160, 89, 0.3);
-        padding: 0 10%;
-    }
-
-    .hero-h1 { font-size: clamp(35px, 5vw, 65px); margin-bottom: 30px; line-height: 1.2; }
-    .hero-line { width: 80px; height: 2px; background: var(--primary-gold); margin-bottom: 30px; }
-
-    /* 3 & 4. TEMPLATES - COLEÇÃO EXCLUSIVA */
-    .exclusive-card {
-        padding: 0;
-        background: white;
-        border: 1px solid #eee;
-        transition: 0.5s ease;
-    }
-    .exclusive-card:hover {
-        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        border-color: var(--primary-gold);
-    }
-    .card-meta {
-        padding: 30px;
-        text-align: center;
-    }
-
-    /* 6. É PARA VOCÊ QUE - PILARES */
-    .pillar-box {
-        text-align: center;
-        padding: 40px;
-        border-right: 1px solid #eee;
-    }
-    .pillar-box:last-child { border-right: none; }
-
-    /* 7. PASSO A PASSO - A JORNADA */
-    .step-box-luxury {
-        border-left: 1px solid var(--primary-gold);
-        padding: 0 0 40px 30px;
-        margin-left: 20px;
-    }
-
-    /* 8. PREÇOS - INVESTIMENTO */
-    .price-box {
-        background: var(--navy-dark);
-        color: white;
-        padding: 60px 40px;
-        text-align: center;
-        border: 1px solid var(--primary-gold);
-    }
-
-    /* Botão de Alfaiataria */
-    div.stButton > button {
-        background: transparent;
-        color: var(--navy-dark);
-        border: 1px solid var(--navy-dark);
-        padding: 12px 35px;
+    /* Tipografia Industrial */
+    html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
-        font-weight: 600;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: -1px;
+    }
+
+    .mono {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #888;
+    }
+
+    /* 1 & 2. HERO - A ESTRUTURA */
+    .hero-bautz {
+        padding: 150px 8% 100px 8%;
+        border-bottom: 1px solid var(--bautz-border);
+        background: var(--bautz-gray);
+    }
+    .hero-h1 { font-size: clamp(40px, 6vw, 80px); line-height: 0.9; margin-bottom: 40px; }
+    .hero-sub { font-size: 20px; max-width: 700px; color: #666; font-weight: 300; line-height: 1.6; }
+
+    /* 3 & 4. TEMPLATES - GRID DE ENGENHARIA */
+    .template-grid-item {
+        border: 1px solid var(--bautz-border);
+        background: white;
+        transition: 0.3s;
+        height: 100%;
+    }
+    .template-grid-item:hover {
+        border-color: var(--bautz-accent);
+    }
+    .specs-box {
+        padding: 20px;
+        border-top: 1px solid var(--bautz-border);
+    }
+
+    /* 6. É PARA VOCÊ QUE - MÓDULOS */
+    .module-card {
+        padding: 40px;
+        border-left: 1px solid var(--bautz-accent);
+        background: white;
+        margin-bottom: 20px;
+    }
+
+    /* 7. PASSO A PASSO - FLUXO DE TRABALHO */
+    .workflow-line {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        padding: 40px 0;
+        border-top: 1px solid var(--bautz-border);
+    }
+
+    /* 8. PREÇOS - UNIDADES DE NEGÓCIO */
+    .price-industrial {
+        border: 1px solid var(--bautz-border);
+        padding: 40px;
+    }
+    .price-industrial.active {
+        background: var(--bautz-black);
+        color: white;
+    }
+
+    /* Botão Técnico */
+    div.stButton > button {
+        background: var(--bautz-black);
+        color: white;
+        border: none;
+        padding: 15px 35px;
         border-radius: 0;
-        transition: 0.4s;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: 0.3s;
     }
     div.stButton > button:hover {
-        background: var(--navy-dark);
-        color: var(--primary-gold);
-        border-color: var(--navy-dark);
+        background: var(--bautz-accent);
+        color: white;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # --- 1 & 2. HERO SECTION ---
 st.markdown("""
-<div class="hero-luxury">
-    <div class="hero-line"></div>
-    <h1 class="hero-h1">A ARTE DA PRESENÇA<br>DIGITAL IMPECÁVEL</h1>
-    <p class="serif-body" style="max-width: 850px; color: var(--text-gray); margin-bottom: 40px;">
-        Seu site profissional em minutos, com a sofisticação de um projeto feito sob medida. 
-        Escolha entre templates de alta conversão e eleve o padrão do seu negócio.
+<div class="hero-bautz">
+    <p class="mono">Codeless Architecture v2.0</p>
+    <h1 class="hero-h1">SITES DE ALTA<br>PRECISÃO.</h1>
+    <p class="hero-sub">
+        Desenvolva a sua presença digital com a eficiência de um processo industrial. 
+        Templates otimizados para velocidade, conversão e autonomia total.
     </p>
 """, unsafe_allow_html=True)
-st.button("CONHEÇA A COLEÇÃO")
+st.button("CONFIGURAR AGORA")
 st.markdown("</div>", unsafe_allow_html=True)
 
-# --- 3 & 4. TEMPLATES (SHOWCASE MINIMALISTA) ---
-st.markdown('<div style="padding: 100px 10%;">', unsafe_allow_html=True)
-st.markdown('<h2 style="text-align: center; margin-bottom: 80px;">CURADORIA DE DESIGN</h2>', unsafe_allow_html=True)
+# --- 3 & 4. TEMPLATES (SHOWCASE TÉCNICO) ---
+st.markdown('<div style="padding: 100px 8%;">', unsafe_allow_html=True)
+st.markdown('<p class="mono">// CATÁLOGO DE COMPONENTES</p>', unsafe_allow_html=True)
+st.markdown('<h2 style="margin-bottom: 60px;">MODELOS DISPONÍVEIS</h2>', unsafe_allow_html=True)
 
-t_col1, t_col2, t_col3 = st.columns(3)
+t1, t2, t3 = st.columns(3, gap="medium")
 
-def render_luxury_item(col, name, style, img):
+def render_bautz_item(col, name, ref, img):
     with col:
         st.markdown(f"""
-        <div class="exclusive-card">
-            <img src="{img}" style="width:100%; height:350px; object-fit:cover; grayscale(100%);">
-            <div class="card-meta">
-                <p style="font-size: 11px; letter-spacing: 3px; color: var(--primary-gold); font-weight: 600;">{style}</p>
-                <h3 style="font-family: 'Cinzel'; margin: 15px 0;">{name}</h3>
+        <div class="template-grid-item">
+            <img src="{img}" style="width:100%; height:250px; object-fit:cover; filter: grayscale(1);">
+            <div class="specs-box">
+                <p class="mono" style="font-size:10px;">REF: {ref}</p>
+                <h3 style="font-size:20px; margin: 10px 0;">{name}</h3>
+                <p style="font-size:13px; color:#888;">Estrutura modular com 100% de pontuação no Core Web Vitals.</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
-        st.button(f"SOLICITAR PREVIEW: {name.split()[0]}", key=name)
+        st.button(f"INSPECIONAR {ref}", key=ref)
 
-render_luxury_item(t_col1, "ESTATES & CO", "MINIMALIST LUXURY", "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600")
-render_luxury_item(t_col2, "SILICON VALLEY", "HIGH-TECH CORPORATE", "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600")
-render_luxury_item(t_col3, "THE ARTISAN", "EDITORIAL STYLE", "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600")
+render_bautz_item(t1, "STRUCTURAL MINIMAL", "BTZ-01", "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600")
+render_bautz_item(t2, "DYNAMIC FLOW", "BTZ-02", "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600")
+render_bautz_item(t3, "CORPORATE CORE", "BTZ-03", "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600")
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 5. PROVA SOCIAL (DISCRETA) ---
+# --- 5. PROVA SOCIAL (LOGOS EM GRID) ---
 st.markdown("""
-<div style="padding: 60px 10%; background: #f4f4f4; text-align: center; border-top: 1px solid #eee;">
-    <p style="letter-spacing: 4px; font-size: 12px; margin-bottom: 30px;">CONFIADO POR LÍDERES DE MERCADO</p>
-    <div style="display: flex; justify-content: center; gap: 60px; opacity: 0.6; grayscale(100%);">
-        <span style="font-family: 'Cinzel'; font-size: 20px;">FORBES</span>
-        <span style="font-family: 'Cinzel'; font-size: 20px;">VOGUE</span>
-        <span style="font-family: 'Cinzel'; font-size: 20px;">TECH CRUNCH</span>
-        <span style="font-family: 'Cinzel'; font-size: 20px;">ESTATE</span>
-    </div>
+<div style="padding: 60px 8%; border-top: 1px solid var(--bautz-border); border-bottom: 1px solid var(--bautz-border); display: flex; justify-content: space-between; align-items: center; opacity: 0.5;">
+    <span class="mono">TRUSTED BY INDUSTRY LEADERS:</span>
+    <span style="font-weight:900; font-size:20px;">MATTEL</span>
+    <span style="font-weight:900; font-size:20px;">SIEMENS</span>
+    <span style="font-weight:900; font-size:20px;">BMW</span>
+    <span style="font-weight:900; font-size:20px;">BASF</span>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 6. É PARA VOCÊ QUE ---
-st.markdown('<div style="padding: 100px 10%; background: white;">', unsafe_allow_html=True)
-st_col1, st_col2, st_col3 = st.columns(3)
+st.markdown('<div style="padding: 100px 8%; background: var(--bautz-gray);">', unsafe_allow_html=True)
+st.markdown('<h2 style="margin-bottom: 50px;">APLICAÇÕES DO SISTEMA</h2>', unsafe_allow_html=True)
 
-with st_col1:
-    st.markdown('<div class="pillar-box"><h3>EXCELÊNCIA</h3><p>Para quem não aceita nada menos que o melhor design do mercado.</p></div>', unsafe_allow_html=True)
-with st_col2:
-    st.markdown('<div class="pillar-box"><h3>ESCALA</h3><p>Ideal para profissionais que vendem sites de alto valor para clientes exigentes.</p></div>', unsafe_allow_html=True)
-with st_col3:
-    st.markdown('<div class="pillar-box"><h3>LEGADO</h3><p>Construa uma autoridade digital que dure décadas, não apenas semanas.</p></div>', unsafe_allow_html=True)
+col_v1, col_v2 = st.columns(2)
+
+with col_v1:
+    st.markdown('<div class="module-card"><p class="mono">01 / AUTONOMIA</p><h3>Crie e customize em minutos sem depender de terceiros ou agências lentas.</h3></div>', unsafe_allow_html=True)
+    st.markdown('<div class="module-card"><p class="mono">02 / RENTABILIDADE</p><h3>Venda sites profissionais com margem de lucro industrial para o mercado B2B.</h3></div>', unsafe_allow_html=True)
+with col_v2:
+    st.markdown('<div class="module-card"><p class="mono">03 / PERFORMANCE</p><h3>Aumente a conversão dos seus produtos com layouts validados por testes de stress.</h3></div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 7. PASSO A PASSO (A METODOLOGIA) ---
-st.markdown('<div style="padding: 100px 15%;">', unsafe_allow_html=True)
-st.markdown('<h2>O PROTOCOLO DE EXCUÇÃO</h2><br><br>', unsafe_allow_html=True)
+# --- 7. PASSO A PASSO (WORKFLOW) ---
+st.markdown('<div style="padding: 100px 8%;">', unsafe_allow_html=True)
+st.markdown('<h2>FLUXO DE IMPLEMENTAÇÃO</h2>', unsafe_allow_html=True)
 
-def render_step_luxury(title, desc):
+def render_flow(num, title, desc):
     st.markdown(f"""
-    <div class="step-box-luxury">
-        <h4 style="font-family: 'Cinzel'; color: var(--navy-dark);">{title}</h4>
-        <p style="font-size: 16px; opacity: 0.8; max-width: 600px;">{desc}</p>
+    <div class="workflow-line">
+        <h1 style="color: var(--bautz-accent); margin:0;">{num}</h1>
+        <div>
+            <h4 style="margin:0;">{title}</h4>
+            <p style="color:#666; max-width: 500px;">{desc}</p>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-render_step_luxury("ADQUIRA SUA LICENÇA", "Acesso imediato à nossa biblioteca restrita de templates de alto padrão.")
-render_step_luxury("PERSONALIZAÇÃO GUIADA", "Ajuste cada detalhe para refletir a identidade única da sua marca.")
-render_step_luxury("INFRAESTRUTURA DE ELITE", "Te ensinamos a hospedar seu projeto com máxima segurança e velocidade.")
-render_step_luxury("LANÇAMENTO ESTRATÉGICO", "Seu site entra no ar como um ativo de prestígio para seu negócio.")
+render_flow("01", "AQUISIÇÃO DO MÓDULO", "Acesso imediato ao repositório de códigos fonte após a validação.")
+render_flow("02", "ASSEMBLY (MONTAGEM)", "Substitua textos e imagens seguindo o nosso manual de diretrizes visuais.")
+render_flow("03", "DEPLOYMENT", "Conecte o seu domínio e publique o site em servidores de alta velocidade.")
+render_flow("04", "OPERAÇÃO", "Seu site está pronto para gerar resultados com manutenção zero.")
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 8. PREÇOS (O INVESTIMENTO) ---
-st.markdown('<div style="padding: 100px 10%; background: var(--navy-dark); color: white;">', unsafe_allow_html=True)
-st.markdown('<h2 style="color: white; text-align: center;">INVESTIMENTO</h2><br><br>', unsafe_allow_html=True)
+# --- 8. PREÇOS (TABELA INDUSTRIAL) ---
+st.markdown('<div style="padding: 100px 8%; background: white;">', unsafe_allow_html=True)
+st.markdown('<h2 style="text-align:center; margin-bottom:60px;">PLANOS DE ACESSO</h2>', unsafe_allow_html=True)
 
-p1, p2, p3 = st.columns(3)
-
-with p2: # Featured
-    st.markdown("""
-    <div class="price-box">
-        <h3 style="color: var(--primary-gold);">PRESTIGE PASS</h3>
-        <h1 style="font-size: 60px; margin: 30px 0; color: white;">R$ 297</h1>
-        <p>Acesso Completo à Curadoria</p>
-        <p>Suporte Concierge</p>
-        <p>Licença de Revenda Premium</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.button("ADQUIRIR PRESTIGE", key="p2")
+p1, p2, p3 = st.columns(3, gap="small")
 
 with p1:
-    st.markdown("""
-    <div class="price-box" style="background: transparent; border: 1px solid rgba(255,255,255,0.1);">
-        <h3 style="color: white;">ESSENTIAL</h3>
-        <h1 style="font-size: 50px; margin: 30px 0; color: white;">R$ 147</h1>
-        <p>1 Template Sob Medida</p>
-        <p>Guia de Implementação</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.button("INICIAR ESSENTIAL", key="p1")
+    st.markdown('<div class="price-industrial"><p class="mono">BASIC UNIT</p><h1>R$ 97</h1><hr><p>1 Template Modular</p><p>Manual de Montagem</p></div>', unsafe_allow_html=True)
+    st.button("ADQUIRIR BASIC", key="b1")
+
+with p2:
+    st.markdown('<div class="price-industrial active"><p class="mono" style="color:var(--bautz-accent)">FULL STACK</p><h1>R$ 197</h1><hr><p>Todos os Templates</p><p>Suporte Técnico Direto</p><p>Updates de Engenharia</p></div>', unsafe_allow_html=True)
+    st.button("ADQUIRIR FULL", key="b2")
 
 with p3:
-    st.markdown("""
-    <div class="price-box" style="background: transparent; border: 1px solid rgba(255,255,255,0.1);">
-        <h3 style="color: white;">FOUNDER</h3>
-        <h1 style="font-size: 50px; margin: 30px 0; color: white;">R$ 597</h1>
-        <p>Acesso Vitalício</p>
-        <p>Mentoria de Branding</p>
-        <p>Novos Templates Mensais</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.button("TORNAR-SE FOUNDER", key="p3")
+    st.markdown('<div class="price-industrial"><p class="mono">ENTERPRISE</p><h1>R$ 497</h1><hr><p>Licença Comercial</p><p>Whitelabel Ready</p><p>Consultoria de Deploy</p></div>', unsafe_allow_html=True)
+    st.button("ADQUIRIR ENTERPRISE", key="b3")
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 9. FAQ ---
-st.markdown('<div style="padding: 100px 20%;">', unsafe_allow_html=True)
-st.markdown('<h2 style="text-align: center;">QUESTÕES FREQUENTES</h2><br>', unsafe_allow_html=True)
-
-with st.expander("OS TEMPLATES SÃO EXCLUSIVOS?"):
-    st.write("Nossa biblioteca é limitada para garantir que seu design mantenha um alto nível de raridade no mercado.")
-
-with st.expander("HÁ SUPORTE PARA INTEGRAÇÃO JURÍDICA/MÉDICA?"):
-    st.write("Sim, nossos layouts respeitam as normas de sobriedade e ética exigidas para profissionais liberais de alto padrão.")
+st.markdown('<div style="padding: 100px 20%; background: var(--bautz-gray);">', unsafe_allow_html=True)
+with st.expander("O CÓDIGO É OTIMIZADO PARA SEO?"):
+    st.write("Sim, todos os modelos seguem a semântica correta de HTML5 para máxima indexação.")
+with st.expander("POSSO ALTERAR AS CORES E FONTES?"):
+    st.write("Absolutamente. O sistema é modular e permite alterações rápidas no ficheiro de estilos.")
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- FOOTER ---
 st.markdown("""
-<div style="padding: 80px 10%; text-align: center; border-top: 1px solid #eee; font-size: 11px; letter-spacing: 3px; color: #999;">
-    © 2026 SITE PRO EXCELLENCE // BOUTIQUE DIGITAL // LONDON - SÃO PAULO
+<div style="padding: 60px 8%; border-top: 1px solid var(--bautz-border); display: flex; justify-content: space-between; font-size: 11px; color: #999;">
+    <span>SITE PRO / ENGINEERING DIVISION</span>
+    <span>© 2026 ALL RIGHTS RESERVED</span>
+    <span class="mono">BUILD_V.4.0.1</span>
 </div>
 """, unsafe_allow_html=True)
