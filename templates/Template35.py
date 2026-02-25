@@ -1,190 +1,177 @@
 import streamlit as st
 
 def render():
-    # --- SISTEMA DE DESIGN ALCRE (KOREAN MINIMALISM) ---
+    # --- SISTEMA DE DESIGN GOOD SECRETS ---
     st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Inter:wght@300;400;500&display=swap');
 
         :root {
-            --al-bg: #ffffff;
-            --al-black: #000000;
-            --al-gray: #f2f2f2;
-            --al-text-muted: #888888;
-            --al-border: #e5e5e5;
+            --gs-bg: #FDF9F3; /* Creme Suave */
+            --gs-dark: #2D1B14; /* Marrom Chocolate */
+            --gs-text: #4A3B33;
+            --gs-accent: #E8D5C4;
         }
 
-        .stApp { background-color: var(--al-bg); color: var(--al-black); }
+        .stApp { background-color: var(--gs-bg); color: var(--gs-dark); }
         [data-testid="stHeader"] { display: none; }
         .block-container { padding: 0 !important; max-width: 100% !important; }
 
-        html, body, [class*="css"] { 
-            font-family: 'Inter', sans-serif; 
-            -webkit-font-smoothing: antialiased;
+        html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
+        /* --- TYPOGRAPHY --- */
+        .gs-serif { font-family: 'Cormorant Garamond', serif; }
+        
+        .gs-h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 7vw, 90px);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
         }
 
-        .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+        .gs-label {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gs-dark);
+            margin-bottom: 20px;
+            display: block;
+        }
 
-        /* --- NAVEGAÇÃO (CLEAN OS STYLE) --- */
-        .al-nav {
-            padding: 25px 5%;
+        /* --- NAV --- */
+        .gs-nav {
+            padding: 30px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--al-border);
-            position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+            background: transparent;
+            position: absolute; width: 100%; top: 0; z-index: 100;
         }
 
-        /* --- HERO SECTION --- */
-        .al-hero {
-            padding: 120px 5% 80px 5%;
-            border-bottom: 1px solid var(--al-border);
-        }
-
-        .al-h1 {
-            font-size: clamp(40px, 8vw, 110px);
-            font-weight: 500;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            margin-bottom: 60px;
-        }
-
-        /* --- GRID DE PROJETOS (BENTO MODERNO) --- */
-        .al-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            border-bottom: 1px solid var(--al-border);
-        }
-
-        .al-grid-item {
-            border-right: 1px solid var(--al-border);
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-        }
-
-        .al-grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .al-grid-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .al-project-info {
-            padding: 30px;
-            border-bottom: 1px solid var(--al-border);
-        }
-
-        /* --- BOTÃO ALCRE (STARK) --- */
+        /* --- BUTTONS --- */
         div.stButton > button {
-            background-color: var(--al-black) !important;
+            background-color: var(--gs-dark) !important;
             color: white !important;
             border: none !important;
-            padding: 15px 40px !important;
-            border-radius: 0px !important;
-            font-size: 12px !important;
-            font-weight: 500 !important;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            padding: 14px 40px !important;
+            border-radius: 100px !important;
+            font-size: 14px !important;
+            font-weight: 400 !important;
             transition: 0.3s !important;
         }
 
         div.stButton > button:hover {
-            background-color: #333 !important;
-            opacity: 0.8;
+            opacity: 0.85 !important;
+            transform: scale(1.02);
         }
 
-        /* --- FOOTER --- */
-        .al-footer {
-            padding: 100px 5%;
-            background: var(--al-bg);
+        /* --- SEÇÕES --- */
+        .gs-section { padding: 120px 6%; }
+        
+        .gs-image-hero {
+            width: 100%;
+            height: 90vh;
+            background-image: url('https://images.unsplash.com/photo-1515377067373-bc604084e6f6?w=1600');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+        }
+
+        .gs-card {
+            background: white;
+            padding: 40px;
+            border-radius: 0px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
     </style>
     """, unsafe_allow_html=True)
 
     # --- NAVBAR ---
     st.markdown("""
-    <div class="al-nav">
-        <div style="font-weight: 600; font-size: 22px; letter-spacing: -1px;">ALCRE</div>
-        <div class="mono" style="display: flex; gap: 40px; text-transform: uppercase;">
-            <span>Trabalhos</span>
+    <div class="gs-nav">
+        <div style="font-weight: 500; font-size: 18px; letter-spacing: 4px;">GOOD SECRETS</div>
+        <div style="display: flex; gap: 40px; font-size: 12px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px;">
+            <span>Suplementos</span>
+            <span>Ritual</span>
             <span>Sobre</span>
-            <span>Contato</span>
-            <span style="opacity: 0.4;">KR / EN</span>
+            <span style="border-bottom: 1px solid var(--gs-dark)">Comprar</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # --- HERO ---
-    st.markdown('<div class="al-hero">', unsafe_allow_html=True)
-    st.markdown('<p class="mono" style="margin-bottom: 20px;">[ ALQUIMIA & CRIAÇÃO ]</p>', unsafe_allow_html=True)
-    st.markdown('<h1 class="al-h1">Moldando o futuro<br>através do design<br>atemporal.</h1>', unsafe_allow_html=True)
-    
-    col_h1, col_h2 = st.columns([1, 1])
+    # --- HERO SECTION ---
+    st.markdown('<div class="gs-section" style="padding-top: 180px;">', unsafe_allow_html=True)
+    col_h1, col_h2 = st.columns([1, 1], gap="large")
     with col_h1:
-        st.markdown('<p style="font-size: 18px; color: var(--al-text-muted); line-height: 1.6; max-width: 450px;">Somos um estúdio de design estratégico com sede em Seul, focado em transformar ideias complexas em experiências digitais simples e potentes.</p>', unsafe_allow_html=True)
+        st.markdown('<span class="gs-label">O SEGREDO DA LONGEVIDADE</span>', unsafe_allow_html=True)
+        st.markdown('<h1 class="gs-h1">Nutrição consciente para <span style="font-style:italic">mentes modernas.</span></h1>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size: 18px; line-height: 1.6; margin-bottom: 40px; color: var(--gs-text);">Acreditamos que o bem-estar começa de dentro para fora. Criamos suplementos puros, potentes e elegantes para o seu ritual diário.</p>', unsafe_allow_html=True)
+        st.button("VER COLEÇÃO")
+    with col_h2:
+        st.markdown('<div style="height: 500px; background-image: url(\'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800\'); background-size: cover; border-radius: 200px 200px 0 0;"></div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # --- GRID DE PROJETOS (FULL WIDTH) ---
-    # Linha 1
-    c1, c2 = st.columns(2, gap="none")
+    # --- SEÇÃO DE PRODUTOS (PROVA SOCIAL) ---
+    st.markdown('<div style="padding: 100px 6%; background: var(--gs-accent); text-align: center;">', unsafe_allow_html=True)
+    st.markdown('<h2 class="gs-serif" style="font-size: 40px; margin-bottom: 60px;">Feito para o seu melhor eu.</h2>', unsafe_allow_html=True)
+    
+    c1, c2, c3 = st.columns(3, gap="medium")
     with c1:
-        st.markdown('<div class="al-grid-item"><img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200"></div>', unsafe_allow_html=True)
-        st.markdown('<div class="al-project-info"><p class="mono">01 / BRANDING</p><h3 style="font-weight:500;">Oasis Smart Home</h3></div>', unsafe_allow_html=True)
+        st.markdown('<div class="gs-card"><h3>FOCO</h3><p style="opacity: 0.7; margin-top: 15px;">Clareza cognitiva e energia mental sustentada.</p></div>', unsafe_allow_html=True)
     with c2:
-        st.markdown('<div class="al-grid-item" style="border-right:none;"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200"></div>', unsafe_allow_html=True)
-        st.markdown('<div class="al-project-info" style="border-right:none;"><p class="mono">02 / UIUX</p><h3 style="font-weight:500;">Nebula Dashboard</h3></div>', unsafe_allow_html=True)
-
-    # Linha 2
-    c3, c4 = st.columns(2, gap="none")
+        st.markdown('<div class="gs-card"><h3>CALMA</h3><p style="opacity: 0.7; margin-top: 15px;">Equilíbrio para os dias de alta intensidade.</p></div>', unsafe_allow_html=True)
     with c3:
-        st.markdown('<div class="al-grid-item"><img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=1200"></div>', unsafe_allow_html=True)
-        st.markdown('<div class="al-project-info"><p class="mono">03 / WEB</p><h3 style="font-weight:500;">Kinetica Architecture</h3></div>', unsafe_allow_html=True)
-    with c4:
-        st.markdown('<div class="al-grid-item" style="border-right:none;"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200"></div>', unsafe_allow_html=True)
-        st.markdown('<div class="al-project-info" style="border-right:none;"><p class="mono">04 / R&D</p><h3 style="font-weight:500;">Experimental Lab</h3></div>', unsafe_allow_html=True)
+        st.markdown('<div class="gs-card"><h3>VITAL</h3><p style="opacity: 0.7; margin-top: 15px;">Recuperação profunda e suporte imunológico.</p></div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # --- SEÇÃO DE SERVIÇOS (TABELA TÉCNICA) ---
-    st.markdown('<div style="padding: 100px 5%; border-bottom: 1px solid var(--al-border);">', unsafe_allow_html=True)
-    st.markdown('<h2 class="mono" style="margin-bottom: 50px;">SERVIÇOS_</h2>', unsafe_allow_html=True)
-    
-    col_s1, col_s2, col_s3 = st.columns(3)
-    service_style = "border-top: 1px solid black; padding-top: 20px; font-size: 14px;"
-    
-    with col_s1:
-        st.markdown(f'<div style="{service_style}"><b>ESTRATÉGIA</b><br><br><span style="color:var(--al-text-muted)">Análise de Mercado<br>Posicionamento de Marca<br>Naming</span></div>', unsafe_allow_html=True)
-    with col_s2:
-        st.markdown(f'<div style="{service_style}"><b>DESIGN</b><br><br><span style="color:var(--al-text-muted)">Identidade Visual<br>Design de Produto<br>Sistemas de Design</span></div>', unsafe_allow_html=True)
-    with col_s3:
-        st.markdown(f'<div style="{service_style}"><b>DIGITAL</b><br><br><span style="color:var(--al-text-muted)">Desenvolvimento Web<br>Apps Mobile<br>E-commerce</span></div>', unsafe_allow_html=True)
+    # --- SEÇÃO DE NARRATIVA (STORYTELLING) ---
+    st.markdown('<div class="gs-section">', unsafe_allow_html=True)
+    col_t1, col_t2 = st.columns([1.2, 0.8], gap="large")
+    with col_t2:
+        st.markdown('<div style="height: 600px; background-image: url(\'https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800\'); background-size: cover; border-radius: 4px;"></div>', unsafe_allow_html=True)
+    with col_t1:
+        st.markdown('<div style="padding-top: 100px;">', unsafe_allow_html=True)
+        st.markdown('<h2 class="gs-h1">A pureza é a nossa <br>única regra.</h2>', unsafe_allow_html=True)
+        st.markdown("""
+        <p style="font-size: 20px; color: var(--gs-text); line-height: 1.8; margin-bottom: 30px;">
+            Cada ingrediente em nossos suplementos é selecionado com rigor científico e ético. Não usamos enchimentos, não usamos atalhos. Apenas o que seu corpo realmente precisa.
+        </p>
+        <p style="font-weight: 600; text-decoration: underline;">Conheça nossa origem →</p>
+        """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
     # --- FOOTER ---
     st.markdown("""
-    <div class="al-footer">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="padding: 120px 6%; background: var(--gs-dark); color: white;">
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 80px;">
             <div>
-                <h2 style="font-size: 40px; font-weight: 500; margin-bottom: 40px;">Vamos criar algo<br>memorável.</h2>
-                <div class="mono">hello@alcre.co.kr</div>
+                <h2 style="font-weight: 400; font-size: 24px; letter-spacing: 5px; margin-bottom: 20px;">GOOD SECRETS</h2>
+                <p style="opacity: 0.5;">Inspirando rituais de saúde desde 2026.</p>
             </div>
-            <div style="text-align: right;" class="mono">
-                <p>SEUL, COREIA DO SUL</p>
-                <p>INSTAGRAM / LINKEDIN</p>
-                <p style="margin-top: 40px; opacity: 0.3;">© 2026 ALCRE STUDIO</p>
+            <div>
+                <p style="font-weight: 600; margin-bottom: 20px;">MENU</p>
+                <p style="opacity: 0.6; line-height: 2;">Produtos<br>Nosso Estudo<br>Assinatura<br>Imprensa</p>
             </div>
+            <div>
+                <p style="font-weight: 600; margin-bottom: 20px;">CONTATO</p>
+                <p style="opacity: 0.6; line-height: 2;">Instagram<br>E-mail<br>Lojas</p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; display: flex; justify-content: space-between; font-size: 11px; opacity: 0.4; letter-spacing: 1px;">
+            <span>© 2026 GOOD SECRETS BRASIL.</span>
+            <span>PRIVACIDADE & TERMOS</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
-    st.set_page_config(layout="wide", page_title="ALCRE | Design Studio")
+    st.set_page_config(layout="wide", page_title="Good Secrets | Nutrição Chic")
     render()
