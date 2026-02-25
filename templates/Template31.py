@@ -1,166 +1,188 @@
 import streamlit as st
 
 def render():
-    # --- SISTEMA DE DESIGN STATEMENT (VERSÃO BR) ---
+    # --- SISTEMA DE DESIGN EPIMINDS ---
     st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap');
 
         :root {
-            --st-bg: #e7f2e8; /* Verde Pistache Suave */
-            --st-black: #000000;
-            --st-border: #000000;
+            --epi-bg: #fdfbff;
+            --epi-purple: #6c5ce7;
+            --epi-peach: #ff8a71;
+            --epi-text: #1f1f39;
+            --epi-glass: rgba(255, 255, 255, 0.7);
         }
 
-        .stApp { background-color: var(--st-bg); color: var(--st-black); }
+        .stApp { 
+            background-color: var(--epi-bg); 
+            color: var(--epi-text);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(108, 92, 231, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 138, 113, 0.05) 0px, transparent 50%);
+        }
+        
         [data-testid="stHeader"] { display: none; }
         .block-container { padding: 0 !important; max-width: 100% !important; }
 
         html, body, [class*="css"] { 
-            font-family: 'Inter', sans-serif; 
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Plus Jakarta Sans', sans-serif; 
         }
 
-        /* --- GRID BRUTALISTA --- */
-        .st-grid-container {
-            border-top: 2px solid var(--st-black);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* --- HERO SECTION --- */
+        .epi-hero {
+            padding: 140px 10% 80px 10%;
+            text-align: center;
         }
 
-        .st-grid-item {
-            border-right: 2px solid var(--st-black);
-            border-bottom: 2px solid var(--st-black);
-            padding: 80px 8%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .epi-h1 {
+            font-size: clamp(40px, 6vw, 82px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 30px;
+            color: var(--epi-text);
         }
 
-        /* --- TIPOGRAFIA IMPACTANTE --- */
-        .st-h1 {
-            font-size: clamp(45px, 12vw, 150px);
-            font-weight: 900;
-            line-height: 0.8;
-            letter-spacing: -0.07em;
-            margin-bottom: 40px;
-            text-transform: uppercase;
+        .epi-h1 span {
+            background: linear-gradient(90deg, var(--epi-purple), var(--epi-peach));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .st-h2 {
-            font-size: 48px;
-            font-weight: 900;
-            line-height: 0.9;
-            letter-spacing: -0.05em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        /* --- BOTÃO STATEMENT (QUADRADO) --- */
+        /* --- BOTÃO ROUNDED (SOFT TECH) --- */
         div.stButton > button {
-            background-color: var(--st-black) !important;
-            color: var(--st-bg) !important;
-            border: 2px solid var(--st-black) !important;
-            padding: 24px 40px !important;
-            font-weight: 900 !important;
-            border-radius: 0px !important;
-            transition: 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-            font-size: 14px !important;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            width: 100% !important;
+            background: var(--epi-purple) !important;
+            color: white !important;
+            border: none !important;
+            padding: 16px 42px !important;
+            font-weight: 700 !important;
+            border-radius: 100px !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            font-size: 16px !important;
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.2) !important;
         }
 
         div.stButton > button:hover {
-            background-color: transparent !important;
-            color: var(--st-black) !important;
-            transform: translate(6px, -6px);
-            box-shadow: -6px 6px 0px var(--st-black);
+            transform: scale(1.05) translateY(-5px) !important;
+            box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4) !important;
         }
 
-        /* --- NAVEGAÇÃO --- */
-        .st-nav {
-            padding: 40px 5%;
+        /* --- CARDS COM GLASSMORPHISM --- */
+        .epi-card {
+            background: var(--epi-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 32px;
+            padding: 40px;
+            height: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+            transition: 0.3s;
+        }
+
+        .epi-card:hover {
+            transform: translateY(-10px);
+            background: white;
+            box-shadow: 0 30px 60px rgba(108, 92, 231, 0.1);
+        }
+
+        .epi-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        /* --- NAV --- */
+        .epi-nav {
+            padding: 25px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--st-black);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(253, 251, 255, 0.8);
+            backdrop-filter: blur(10px);
         }
     </style>
     """, unsafe_allow_html=True)
 
-    # --- NAVBAR ---
+    # --- NAVEGAÇÃO ---
     st.markdown("""
-    <div class="st-nav">
-        <div style="font-weight: 900; font-size: 28px; letter-spacing: -2px;">STATEMENT.</div>
-        <div style="display: flex; gap: 40px; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">
-            <span>Projetos</span>
-            <span>Estúdio</span>
-            <span>Blog</span>
-            <span style="border-bottom: 3px solid var(--st-black);">Contato</span>
+    <div class="epi-nav">
+        <div style="font-weight: 800; font-size: 24px; color: var(--epi-purple);">epiminds<span style="color:var(--epi-peach);">.</span></div>
+        <div style="display: flex; gap: 35px; font-size: 14px; font-weight: 600; color: #555;">
+            <span>Soluções</span>
+            <span>Metodologia</span>
+            <span>Neurociência</span>
+            <span style="color: var(--epi-purple);">Entrar</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # --- HERO SECTION ---
-    st.markdown('<div style="padding: 120px 5% 100px 5%;">', unsafe_allow_html=True)
-    st.markdown('<h1 class="st-h1">REDEFININDO<br>O PADRÃO.</h1>', unsafe_allow_html=True)
-    
-    col_h1, col_h2 = st.columns([1.4, 1])
-    with col_h1:
-        st.markdown("""
-            <p style="font-size: 26px; font-weight: 400; line-height: 1.2; max-width: 650px; letter-spacing: -0.02em;">
-                Somos um estúdio criativo focado em marcas que desejam cortar o ruído. Através de clareza radical e design intencional, criamos presenças digitais que não podem ser ignoradas.
-            </p>
-        """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # --- GRID DE CONTEÚDO (BENTO BOX) ---
-    st.markdown('<div class="st-grid-container">', unsafe_allow_html=True)
-    
-    # Item 1 - Estratégia
-    st.markdown('<div class="st-grid-item">', unsafe_allow_html=True)
-    st.markdown('<div><p style="font-weight:900; font-size:12px; margin-bottom:40px;">[ 01 ]</p>', unsafe_allow_html=True)
-    st.markdown('<h2 class="st-h2">ESTRATÉGIA<br>DIGITAL.</h2>', unsafe_allow_html=True)
-    st.markdown('<p style="margin-bottom:40px; font-size:18px; line-height:1.4;">Mais que estética. Construímos as bases sólidas para o crescimento do seu negócio.</p></div>', unsafe_allow_html=True)
-    st.button("VER DETALHES", key="btn1")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # Item 2 - Identidade
-    st.markdown('<div class="st-grid-item" style="border-right:none">', unsafe_allow_html=True)
-    st.markdown('<div><p style="font-weight:900; font-size:12px; margin-bottom:40px;">[ 02 ]</p>', unsafe_allow_html=True)
-    st.markdown('<h2 class="st-h2">IDENTIDADE<br>VISUAL.</h2>', unsafe_allow_html=True)
-    st.markdown('<p style="margin-bottom:40px; font-size:18px; line-height:1.4;">Identidade não é apenas um logo. É a materialização de uma promessa e um sentimento.</p></div>', unsafe_allow_html=True)
-    st.button("EXPLORAR PROJETOS", key="btn2")
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # --- SEÇÃO DE IMPACTO ---
+    # --- HERO ---
+    st.markdown('<div class="epi-hero">', unsafe_allow_html=True)
     st.markdown("""
-    <div style="padding: 120px 5%; border-bottom: 2px solid black;">
-        <h2 style="font-size: clamp(30px, 5vw, 60px); font-weight: 900; line-height: 1; letter-spacing: -0.05em; text-transform: uppercase;">
-            Trabalhamos com quem entende que o design é a maior vantagem competitiva do século 21.
-        </h2>
-    </div>
+        <h1 class="epi-h1">
+            Conectando a mente ao <br><span>desempenho humano.</span>
+        </h1>
+        <p style="font-size: 20px; color: #666; max-width: 700px; margin: 0 auto 40px auto; line-height: 1.6;">
+            A Epiminds utiliza inteligência artificial e neurotecnologia para transformar a saúde mental e a produtividade de equipes globais.
+        </p>
     """, unsafe_allow_html=True)
+    
+    c1, c2, c3 = st.columns([1, 0.8, 1])
+    with c2:
+        st.button("INICIAR DIAGNÓSTICO")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # --- FOOTER DARK ---
+    # --- FEATURES SECTION ---
+    st.markdown('<div style="padding: 60px 10% 120px 10%;">', unsafe_allow_html=True)
+    col1, col2, col3 = st.columns(3, gap="large")
+
+    def render_epi_card(col, icon, title, desc):
+        with col:
+            st.markdown(f"""
+            <div class="epi-card">
+                <div class="epi-icon">{icon}</div>
+                <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 15px;">{title}</h3>
+                <p style="color: #666; font-size: 15px; line-height: 1.7;">{desc}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+    render_epi_card(col1, "🧠", "Análise Neural", "Acompanhamento em tempo real dos biomarcadores de estresse e foco da sua equipe.")
+    render_epi_card(col2, "⚡", "Biofeedback", "Intervenções personalizadas baseadas em algoritmos de neurociência comportamental.")
+    render_epi_card(col3, "📊", "Insights de IA", "Dashboards preditivos que identificam sinais de burnout antes que eles aconteçam.")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # --- FOOTER ---
     st.markdown("""
-    <div style="padding: 120px 5%; background: var(--st-black); color: var(--st-bg);">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 60px;">
+    <div style="padding: 100px 10%; background: #1f1f39; color: white; border-radius: 60px 60px 0 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px;">
             <div>
-                <h1 style="color: var(--st-bg); font-size: clamp(60px, 15vw, 200px); font-weight: 900; margin-bottom: 20px; letter-spacing: -10px;">OLÁ.</h1>
-                <p style="font-size: 20px; font-weight: 400;">São Paulo / Global</p>
+                <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 10px;">Vamos evoluir juntos?</h2>
+                <p style="opacity: 0.6;">Tecnologia com propósito para mentes brilhantes.</p>
             </div>
-            <div style="text-align: right; font-weight: 900; text-transform: uppercase; font-size: 16px; letter-spacing: 2px; line-height: 1.8;">
-                INSTAGRAM<br>LINKEDIN<br>BEHANCE<br><br>
-                © 2026 STATEMENT STUDIO
+            <div style="display: flex; gap: 30px;">
+                <div style="text-align: right;">
+                    <p style="font-weight: 700;">CONTATO</p>
+                    <p style="opacity: 0.6;">contato@epiminds.com.br</p>
+                </div>
             </div>
+        </div>
+        <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; opacity: 0.4;">
+            © 2026 EPIMINDS NEUROTECH BRASIL. TODOS OS DIREITOS RESERVADOS.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
-    st.set_page_config(layout="wide", page_title="Statement | Estúdio Criativo")
+    st.set_page_config(layout="wide", page_title="Epiminds | Neurotecnologia")
     render()
