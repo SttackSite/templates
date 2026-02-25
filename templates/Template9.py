@@ -1,225 +1,205 @@
 import streamlit as st
 
 def render():
-    """Renderiza o template Dockyard Social - Edição Sofisticada"""
-    
-    # ❌ NÃO ALTERE: CSS de Alta Fidelidade
+    # --- CSS WIS EDUCATION STYLE ---
     st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Oswald:wght@500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@300;400;700&display=swap');
 
         :root {
-            --dock-yellow: #ffcc00;
-            --dock-black: #0e0e0e;
-            --dock-white: #ffffff;
-            --dock-gray: #f8f8f8;
+            --wis-blue: #0055ff;
+            --wis-orange: #ff6600;
+            --wis-dark: #1e1e1e;
+            --wis-bg-light: #f8faff;
         }
 
-        /* Reset e Base */
-        .stApp { background-color: var(--dock-white); }
+        .stApp {
+            background-color: white;
+            color: var(--wis-dark);
+        }
+        
         [data-testid="stHeader"] { display: none; }
         .block-container { padding: 0 !important; max-width: 100% !important; }
 
-        /* Tipografia Brutalista */
+        /* Tipografia */
+        html, body, [class*="css"] {
+            font-family: 'Inter', sans-serif;
+        }
+
         h1, h2, h3 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            line-height: 0.85;
-            color: var(--dock-black);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--wis-dark);
         }
 
-        /* Navegação VIP */
-        .nav-dock {
-            background-color: rgba(14, 14, 14, 0.98);
-            backdrop-filter: blur(10px);
-            color: var(--dock-yellow);
-            padding: 20px 8%;
+        /* 1 & 2. HERO - TRANSFORMAÇÃO */
+        .hero-wis {
+            padding: 100px 10%;
+            background-color: var(--wis-bg-light);
+            border-bottom-right-radius: 100px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
         }
 
-        .nav-link {
-            color: white !important;
-            text-decoration: none !important;
-            font-family: 'Oswald';
-            font-size: 14px;
-            letter-spacing: 2px;
-            transition: 0.4s;
-            text-transform: uppercase;
-        }
+        .hero-title { font-size: clamp(32px, 5vw, 56px); line-height: 1.1; margin-bottom: 25px; }
+        .wis-dot { color: var(--wis-blue); }
 
-        .nav-link:hover { color: var(--dock-yellow) !important; }
-
-        /* Hero Section Impacto */
-        .hero-dock {
-            background-color: var(--dock-yellow);
-            padding: 120px 8%;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            margin-bottom: -50px;
-        }
-
-        .hero-h1 { font-size: clamp(50px, 10vw, 130px); }
-
-        /* Cards Estilo Galeria */
-        .dock-card {
-            background: var(--dock-white);
-            border: 1px solid #ddd;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 20px;
-        }
-        
-        .dock-card:hover {
-            transform: translateY(-10px) rotate(1deg);
-            box-shadow: 20px 20px 0px var(--dock-black);
-            border-color: var(--dock-black);
-        }
-
-        .card-img-container {
-            height: 300px;
-            overflow: hidden;
-            background: var(--dock-black);
-        }
-
-        .card-img-container img {
-            width: 100%;
+        /* 3 & 4. SOLUTIONS CARDS */
+        .solution-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
-            object-fit: cover;
-            transition: 0.8s;
-            opacity: 0.9;
+        }
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 85, 255, 0.1);
+            border-color: var(--wis-blue);
         }
 
-        .dock-card:hover img {
-            transform: scale(1.1);
-            opacity: 1;
+        /* 5. NUMBERS SECTION */
+        .stat-box {
+            text-align: center;
+            padding: 40px;
+        }
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--wis-blue);
+            margin-bottom: 5px;
         }
 
-        /* Botões Sofisticados */
-        .custom-btn {
+        /* 6. DIFERENCIAIS - PILARES */
+        .pilar-badge {
+            background: rgba(0, 85, 255, 0.1);
+            color: var(--wis-blue);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
             display: inline-block;
-            background-color: var(--dock-black);
-            color: var(--dock-yellow) !important;
-            padding: 18px 45px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 18px;
-            text-decoration: none !important;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        }
+
+        /* Botão WIS */
+        div.stButton > button {
+            background: var(--wis-blue);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            border-radius: 12px;
             transition: 0.3s;
-            border: 2px solid var(--dock-black);
-            cursor: pointer;
-            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 85, 255, 0.2);
         }
-
-        .custom-btn:hover {
-            background-color: transparent;
-            color: var(--dock-black) !important;
-            box-shadow: 8px 8px 0px var(--dock-yellow);
-        }
-
-        .announcement {
-            background: var(--dock-black);
-            color: var(--dock-yellow);
-            padding: 12px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-align: center;
-            font-family: 'Inter';
+        div.stButton > button:hover {
+            background: var(--wis-dark);
+            transform: translateY(-2px);
+            color: white;
         }
     </style>
     """, unsafe_allow_html=True)
 
-    # ========== SEÇÃO 1: NAVEGAÇÃO ==========
-    st.markdown('<div class="announcement">OPENING HOURS: FRI 5PM-11PM • SAT 12PM-11PM • SUN 12PM-8PM</div>', unsafe_allow_html=True)
+    # --- NAVEGAÇÃO ---
     st.markdown("""
-    <div class="nav-dock">
-        <div style="font-size: 28px; font-family: 'Oswald'; font-weight: 700; letter-spacing: -1px;">DOCKYARD<span style="color:white">.</span></div>
-        <div style="display: flex; gap: 40px;">
-            <a href="#" class="nav-link">O QUE ROLA</a>
-            <a href="#" class="nav-link">FOOD</a>
-            <a href="#" class="nav-link">DRINKS</a>
-            <a href="#" class="nav-link" style="color:var(--dock-yellow) !important;">BOOK NOW</a>
+    <div style="padding: 25px 10%; display: flex; justify-content: space-between; align-items: center; background: white;">
+        <div style="font-weight: 800; font-size: 28px; letter-spacing: -1px; color:var(--wis-dark)">WIS<span class="wis-dot">.</span></div>
+        <div style="display: flex; gap: 30px; font-weight: 600; font-size: 14px; color: #666;">
+            <span>SOLUÇÕES</span>
+            <span>QUEM SOMOS</span>
+            <span>BLOG</span>
+            <span style="color: var(--wis-blue)">CONTATO</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # ========== SEÇÃO 2: HERO ==========
-    st.markdown(f"""
-    <div class="hero-dock">
-        <h1 class="hero-h1">STREET FOOD.<br>CRAFT BEER.<br><span style="color:white">REAL VIBES.</span></h1>
-        <p style="font-family:'Inter'; font-size: 18px; max-width: 600px; margin-top: 30px; font-weight: 400; color: #111; line-height: 1.6;">
-            The best street food vendors in Scotland, world-class cocktails, and an atmosphere that defines Glasgow's weekends.
-        </p>
-    </div>
+    # --- 1 & 2. HERO SECTION ---
+    st.markdown("""
+    <div class="hero-wis">
+        <div style="max-width: 800px;">
+            <div class="pilar-badge">Learntech & Consultoria</div>
+            <h1 class="hero-title">Prepare sua empresa para o <span style="color: var(--wis-blue)">próximo nível</span> da aprendizagem.</h1>
+            <p style="font-size: 20px; color: #555; margin-bottom: 40px; line-height: 1.6;">
+                Desenvolvemos soluções de aprendizagem corporativa personalizadas com foco em <b>Cultura e Performance</b>.
+            </p>
     """, unsafe_allow_html=True)
+    st.button("FALE COM ESPECIALISTAS")
+    st.markdown("</div></div>", unsafe_allow_html=True)
 
-    # ========== SEÇÃO 3: GRID DE CONTEÚDO ==========
-    st.write("")
-    st.write("")
-    st.markdown('<div style="padding: 100px 8% 50px 8%;">', unsafe_allow_html=True)
+    # --- 3 & 4. SOLUÇÕES (GRID) ---
+    st.markdown('<div style="padding: 100px 10%;">', unsafe_allow_html=True)
+    st.markdown('<p style="text-align:center; color: var(--wis-blue); font-weight:700;">NOSSAS SOLUÇÕES</p>', unsafe_allow_html=True)
+    st.markdown('<h2 style="text-align:center; margin-bottom:60px;">Como podemos ajudar seu negócio?</h2>', unsafe_allow_html=True)
     
-    col1, col2, col3 = st.columns(3, gap="large")
+    col_s1, col_s2, col_s3 = st.columns(3, gap="large")
 
-    def render_dock_card(col, title, tag, img_url):
+    def render_wis_card(col, title, desc, icon):
         with col:
             st.markdown(f"""
-            <div class="dock-card">
-                <div class="card-img-container">
-                    <img src="{img_url}">
-                </div>
-                <div style="padding: 30px;">
-                    <p style="font-size: 12px; font-weight: 900; color: var(--dock-yellow); background: black; display: inline-block; padding: 2px 10px; margin-bottom: 15px;">{tag}</p>
-                    <h2 style="font-size: 35px; margin: 0;">{title}</h2>
-                </div>
+            <div class="solution-card">
+                <div style="font-size: 40px; margin-bottom: 20px;">{icon}</div>
+                <h3>{title}</h3>
+                <p style="color: #777; font-size: 15px; line-height: 1.6; margin-top: 15px;">{desc}</p>
+                <p style="color: var(--wis-blue); font-weight: 700; margin-top: 20px; cursor: pointer;">Saiba mais →</p>
             </div>
             """, unsafe_allow_html=True)
 
-    render_dock_card(col1, "KITCHEN TAKEOVER", "10+ VENDORS", "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800")
-    render_dock_card(col2, "CRAFT & COCKTAILS", "PREMIUM BAR", "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=800")
-    render_dock_card(col3, "THE WAREHOUSE", "LIVE MUSIC", "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800")
-    
+    render_wis_card(col_s1, "Learning Campaigns", "Campanhas de aprendizagem engajadoras para mudanças de cultura e novos processos.", "🚀")
+    render_wis_card(col_s2, "Design de Comunidades", "Criamos ecossistemas internos onde o conhecimento flui de forma orgânica e contínua.", "🤝")
+    render_wis_card(col_s3, "Upskilling & Reskilling", "Programas intensivos de desenvolvimento de novas competências para o futuro.", "📈")
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ========== SEÇÃO 4: CTA RESERVA ==========
+    # --- 5. NÚMEROS (PROVA SOCIAL) ---
+    st.markdown('<div style="background: var(--wis-dark); color: white; padding: 60px 10%;">', unsafe_allow_html=True)
+    n1, n2, n3, n4 = st.columns(4)
+    with n1: st.markdown('<div class="stat-box"><div class="stat-number">+12</div><div style="opacity:0.7">Anos de Mercado</div></div>', unsafe_allow_html=True)
+    with n2: st.markdown('<div class="stat-box"><div class="stat-number">+900</div><div style="opacity:0.7">Projetos Entregues</div></div>', unsafe_allow_html=True)
+    with n3: st.markdown('<div class="stat-box"><div class="stat-number">+100k</div><div style="opacity:0.7">Pessoas Impactadas</div></div>', unsafe_allow_html=True)
+    with n4: st.markdown('<div class="stat-box"><div class="stat-number">+50</div><div style="opacity:0.7">Grandes Empresas</div></div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # --- 6. MANIFESTO / DIFERENCIAL ---
+    st.markdown('<div style="padding: 120px 10%; background: white;">', unsafe_allow_html=True)
+    c_m1, c_m2 = st.columns([1, 1.2], gap="large")
+    with c_m1:
+        st.image("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800", use_container_width=True)
+    with c_m2:
+        st.markdown("""
+        <div class="pilar-badge">Nossa Metodologia</div>
+        <h2>Aprendizagem aplicada que gera resultado real.</h2>
+        <p style="color:#555; font-size:18px; line-height:1.8; margin-top:20px;">
+            Não acreditamos em treinamentos passivos. Nossa abordagem foca na <b>prática</b>, 
+            utilizando tecnologia e inovação para resolver desafios reais de liderança, cultura e vendas.
+        </p>
+        """, unsafe_allow_html=True)
+        st.button("CONHEÇA NOSSA HISTÓRIA")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # --- FOOTER ---
     st.markdown("""
-    <div style="background-color: var(--dock-gray); padding: 120px 8%; text-align: center; border-top: 1px solid #eee;">
-        <h2 style="font-size: 70px; margin-bottom: 20px;">GET IN THE DOCK.</h2>
-        <p style="font-family:'Inter'; font-size: 20px; color: #666; margin-bottom: 50px;">Entry is only £5. Support local, eat well, stay social.</p>
-        <a href="#" class="custom-btn">SECURE YOUR TICKETS</a>
+    <div style="padding: 80px 10%; border-top: 1px solid #eee; background: #fafafa;">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 50px;">
+            <div>
+                <h3 style="margin-bottom: 20px;">WIS<span class="wis-dot">.</span></h3>
+                <p style="color: #888; font-size: 14px;">São Paulo | Vitória | Florianópolis</p>
+            </div>
+            <div>
+                <h4 style="font-size: 14px; margin-bottom: 15px;">CONTATO</h4>
+                <p style="color: #888; font-size: 14px;">contato@wis.digital<br>(11) 5199-1380</p>
+            </div>
+            <div>
+                <h4 style="font-size: 14px; margin-bottom: 15px;">SIGA A GENTE</h4>
+                <p style="color: #888; font-size: 14px;">Linkedin / Instagram / Spotify</p>
+            </div>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # ========== SEÇÃO 5: FOOTER ==========
-    st.markdown("""
-    <div style="padding: 80px 8%; background: var(--dock-black); color: white;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;">
-            <div style="flex: 1; min-width: 300px;">
-                <h2 style="color: var(--dock-yellow); font-size: 50px;">DOCKYARD<br>SOCIAL.</h2>
-                <p style="opacity: 0.6; margin-top: 20px;">952 South St, Glasgow G14 0BX</p>
-            </div>
-            <div style="flex: 1; min-width: 200px; font-family: 'Oswald';">
-                <p style="color: var(--dock-yellow); letter-spacing: 2px;">SOCIALS</p>
-                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-                    <a href="#" class="nav-link" style="font-size: 24px;">INSTAGRAM</a>
-                    <a href="#" class="nav-link" style="font-size: 24px;">TIKTOK</a>
-                    <a href="#" class="nav-link" style="font-size: 24px;">FACEBOOK</a>
-                </div>
-            </div>
-        </div>
-        <div style="margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; font-size: 11px; opacity: 0.5;">
-            <span>© 2026 DOCKYARD SOCIAL GLASGOW</span>
-            <span>POWERED BY STREAMLIT PRO</span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ❌ NÃO COLOQUE st.set_page_config() aqui se for usar em um multipage app.
-# Se for rodar este arquivo sozinho, descomente a linha abaixo:
-# if __name__ == "__main__": st.set_page_config(layout="wide"); render()
+# Execução direta se rodado sozinho
+if __name__ == "__main__":
+    st.set_page_config(layout="wide", page_title="WIS | Learntech")
+    render()
