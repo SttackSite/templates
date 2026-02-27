@@ -150,7 +150,7 @@ def render():
         <div style="display: flex; animation: marquee 20s linear infinite;">
             <span style="margin-right: 50px;">MELHOR QUE O SEU CHOCOLATE ATUAL 🔥</span>
             <span style="margin-right: 50px;">INGREDIENTES REAIS 🔥</span>
-            <span style="margin-right: 50px;">DO MR moon 🔥</span>
+            <span style="margin-right: 50px;">DO MR MOON 🔥</span>
             <span style="margin-right: 50px;">PROVE A DIFERENÇA 🔥</span>
             <span style="margin-right: 50px;">MELHOR QUE O SEU CHOCOLATE ATUAL 🔥</span>
         </div>
