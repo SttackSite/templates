@@ -238,7 +238,9 @@ def render():
         /* ❌ NÃO ALTERE: Botão secundário */
         .btn-secondary {
             background: transparent;  /* Fundo transparente */
-            color: #ffffff;  /* Texto branco */
+            color: #ffffff !important;  /* Texto branco */
+            text-decoration: none !important;  /* Remove sublinhado de link */
+            display: inline-block;  /* Garante padding correto em <a> */
             padding: 16px 50px;  /* Espaçamento interno */
             border: 2px solid #ffffff;  /* Borda branca */
             border-radius: 4px;  /* Arredondamento suave */
