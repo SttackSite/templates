@@ -13,7 +13,7 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap');
 
     :root {
-        --accent: #7b2cbf;
+        --accent: #7b2cbf; /* Roxo Profundo */
         --gold: #d4af37;
         --dark: #050505;
         --glass: rgba(255, 255, 255, 0.03);
@@ -27,6 +27,7 @@ st.markdown("""
     [data-testid="stHeader"] { display: none; }
     .block-container { padding: 0 !important; max-width: 100% !important; }
 
+    /* Tipografia de Impacto Brutalista */
     h1, h2 {
         font-family: 'Inter', sans-serif;
         font-weight: 900;
@@ -42,6 +43,7 @@ st.markdown("""
         letter-spacing: -1px;
     }
 
+    /* ❌ NÃO ALTERE: NAVBAR ESTILO YOLU ADAPTADO PARA SITE STTACK */
     .navbar-elite {
         display: flex;
         justify-content: space-between;
@@ -54,6 +56,7 @@ st.markdown("""
         box-sizing: border-box;
     }
     
+    /* ❌ NÃO ALTERE: Logo da navbar */
     .logo-elite {
         font-size: 22px;
         font-weight: 900;
@@ -63,12 +66,14 @@ st.markdown("""
         text-transform: uppercase;
     }
 
+    /* ❌ NÃO ALTERE: Container de links de navegação */
     .nav-links-container {
         display: flex;
         gap: 45px;
         align-items: center;
     }
 
+    /* ❌ NÃO ALTERE: Links de navegação */
     .nav-link-elite {
         color: #ffffff !important;
         text-decoration: none !important;
@@ -81,6 +86,7 @@ st.markdown("""
         text-transform: uppercase;
     }
 
+    /* ❌ NÃO ALTERE: Efeito hover nos links */
     .nav-link-elite:hover {
         color: var(--gold) !important;
         text-decoration: none !important;
@@ -91,6 +97,7 @@ st.markdown("""
         text-decoration: none !important;
     }
 
+    /* 1 & 2. HERO RADICAL */
     .hero-section {
         height: 100vh;
         display: flex;
@@ -111,6 +118,7 @@ st.markdown("""
         padding-left: 20px;
     }
 
+    /* 3 & 4. TEMPLATES SHOWCASE (ASSIMÉTRICO) */
     .template-box {
         position: relative;
         overflow: hidden;
@@ -132,6 +140,7 @@ st.markdown("""
         font-size: 30px;
     }
 
+    /* GRID 2D COM SCROLL HORIZONTAL E VERTICAL */
     .carousel-section {
         padding: 120px 8%;
         background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
@@ -148,6 +157,7 @@ st.markdown("""
         letter-spacing: -2px;
     }
 
+    /* ❌ NÃO ALTERE: Container principal com scroll 2D */
     .carousel-container {
         display: flex;
         gap: 20px;
@@ -160,17 +170,32 @@ st.markdown("""
         height: auto;
     }
 
-    .carousel-container::-webkit-scrollbar { height: 8px; }
-    .carousel-container::-webkit-scrollbar-track { background: transparent; }
-    .carousel-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+    .carousel-container::-webkit-scrollbar {
+        height: 8px;
+    }
 
-    .carousel-item-link { display: none; }
+    .carousel-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 4px;
+    }
+
+    /* ❌ NÃO ALTERE: Link do item do carrossel */
+    .carousel-item-link {
+        display: none;
+    }
+
+    /* ❌ NÃO ALTERE: Efeito hover no link do carrossel */
     .carousel-item-link:hover {
         border-color: var(--gold);
         transform: translateY(-15px);
         box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3);
     }
 
+    /* ❌ NÃO ALTERE: Container de cada template com scroll vertical */
     .carousel-item-image-only {
         flex: 0 0 800px;
         min-width: 800px;
@@ -189,9 +214,19 @@ st.markdown("""
         box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3);
     }
 
-    .carousel-item-image-only::-webkit-scrollbar { width: 6px; }
-    .carousel-item-image-only::-webkit-scrollbar-track { background: transparent; }
-    .carousel-item-image-only::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    /* ❌ NÃO ALTERE: Scrollbar vertical de cada template */
+    .carousel-item-image-only::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .carousel-item-image-only::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .carousel-item-image-only::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 3px;
+    }
 
     .carousel-item-image-only img {
         width: auto;
@@ -201,6 +236,7 @@ st.markdown("""
         border-radius: 8px;
     }
 
+    /* ❌ NÃO ALTERE: Imagem dentro do link */
     .carousel-item-link img {
         width: 100%;
         height: 100%;
@@ -209,6 +245,7 @@ st.markdown("""
         border-radius: 8px;
     }
 
+    /* 5. CLIENTS (FLOATING AVATARS) */
     .client-section {
         padding: 100px 8%;
         background: #0a0a0a;
@@ -217,6 +254,7 @@ st.markdown("""
         gap: 50px;
     }
 
+    /* 6. É PARA VOCÊ QUE (CARDS NEO-BRUTALISTAS) */
     .target-card {
         padding: 50px;
         background: white;
@@ -226,6 +264,7 @@ st.markdown("""
         height: 100%;
     }
 
+    /* 7. PASSO A PASSO (VERTICAL & BOLD) */
     .step-row {
         display: flex;
         gap: 30px;
@@ -240,6 +279,7 @@ st.markdown("""
         line-height: 0.7;
     }
 
+    /* 8. PREÇOS (GLASSMORPHISM) */
     .pricing-glass {
         background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(15px);
@@ -248,8 +288,11 @@ st.markdown("""
         border-radius: 2px;
         text-align: center;
     }
-    .pricing-glass:hover { border-color: var(--accent); }
+    .pricing-glass:hover {
+        border-color: var(--accent);
+    }
 
+    /* Botão de Alta Conversão */
     div.stButton > button {
         background: linear-gradient(90deg, #7b2cbf, #9d4edd);
         color: white;
@@ -268,6 +311,7 @@ st.markdown("""
         box-shadow: 0 0 30px rgba(123, 44, 191, 0.5);
     }
 
+    /* ❌ NÃO ALTERE: FAQ Destacado - Política de Reembolso */
     .faq-highlighted {
         background: linear-gradient(135deg, rgba(123, 44, 191, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
         border: 2px solid var(--gold);
@@ -277,6 +321,7 @@ st.markdown("""
         box-shadow: 0 10px 50px rgba(212, 175, 55, 0.2);
     }
 
+    /* ❌ NÃO ALTERE: Título do FAQ Destacado */
     .faq-highlighted-title {
         color: var(--gold);
         font-size: 24px;
@@ -287,6 +332,7 @@ st.markdown("""
         margin-bottom: 20px;
     }
 
+    /* ❌ NÃO ALTERE: Conteúdo do FAQ Destacado */
     .faq-highlighted-content {
         color: #ffffff;
         font-size: 14px;
@@ -294,12 +340,14 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
     }
 
+    /* ❌ NÃO ALTERE: Ícone de atenção */
     .faq-highlight-icon {
         font-size: 28px;
         margin-right: 10px;
         color: var(--gold);
     }
 
+    /* ✅ CONTAINER COM SCROLL VERTICAL PARA TEMPLATES */
     .template-scroll-container {
         width: 100%;
         max-width: 1000px;
@@ -314,11 +362,27 @@ st.markdown("""
         scroll-behavior: smooth;
     }
 
-    .template-scroll-container::-webkit-scrollbar { width: 12px; }
-    .template-scroll-container::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
-    .template-scroll-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; border: 2px solid rgba(5, 5, 5, 0.5); }
-    .template-scroll-container::-webkit-scrollbar-thumb:hover { background: #e8c547; }
+    /* ✅ SCROLLBAR ESTILIZADA */
+    .template-scroll-container::-webkit-scrollbar {
+        width: 12px;
+    }
 
+    .template-scroll-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    .template-scroll-container::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 10px;
+        border: 2px solid rgba(5, 5, 5, 0.5);
+    }
+
+    .template-scroll-container::-webkit-scrollbar-thumb:hover {
+        background: #e8c547;
+    }
+
+    /* ✅ IMAGEM DENTRO DO CONTAINER */
     .template-scroll-image {
         width: 100%;
         height: auto;
@@ -472,6 +536,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+
 # --- 8. PREÇOS (ELITE) ---
 st.markdown('<div id="precos" style="padding: 120px 8%; text-align:center;">', unsafe_allow_html=True)
 st.markdown('<h2>INVISTA NA SUA <span class="serif-heavy">Presença.</span></h2><br><br>', unsafe_allow_html=True)
@@ -496,27 +561,6 @@ with p2: # Featured
     </div>
     """, unsafe_allow_html=True)
     st.button("CRIAR MEU SITE AGORA", key="main_p")
-    import streamlit.components.v1 as components
-    components.html("""
-    <script>
-    function attachClick() {
-        const buttons = window.parent.document.querySelectorAll('button');
-        let found = false;
-        buttons.forEach(btn => {
-            if (btn.innerText.trim() === 'CRIAR MEU SITE AGORA') {
-                btn.onclick = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    window.open('https://pay.kiwify.com.br/qE6dljc', '_blank');
-                };
-                found = true;
-            }
-        });
-        if (!found) setTimeout(attachClick, 300);
-    }
-    attachClick();
-    </script>
-    """, height=0)
 
 with p3:
     st.markdown("""
@@ -556,10 +600,10 @@ faq = {
 }
 
 for i, (q, a) in enumerate(faq.items()):
-    if i == 0:
+    if i == 0:  # Primeiro item (Política de Reembolso) com destaque
         with st.expander(q):
             st.markdown(f"<p style='color: var(--gold); font-size: 15px; font-weight: 600;'>{a}</p>", unsafe_allow_html=True)
-    else:
+    else:  # Demais itens normais
         with st.expander(q):
             st.markdown(f"<p style='color: #ccc;'>{a}</p>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
