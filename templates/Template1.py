@@ -421,7 +421,7 @@ def render():
         
         /* ❌ NÃO ALTERE: Esconde o header padrão do Streamlit */
         [data-testid="stHeader"] { 
-            display: none;  /* Oculta o header */
+            display: none;
         }
         
         /* ❌ NÃO ALTERE: Esconde o ícone do GitHub do Streamlit */
