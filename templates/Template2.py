@@ -850,3 +850,17 @@ def render():
     # Esta é a seção do rodapé com informações de contato
     footer_html = '<div class="footer"><div class="footer-text">Telefone: (99) 99999-9999 | Email: contato@fitpro.com.br</div><div class="footer-text">Endereço: Av. Principal, 1234 - São Paulo, SP</div><div class="footer-copyright">© 2025 FitPro Academia. Todos os direitos reservados. Transformando vidas através do fitness.</div></div>'
     st.markdown(footer_html, unsafe_allow_html=True)
+
+    # ========== BOTÃO EDITAR TEMPLATE ==========
+    st.markdown("""
+    <div style="text-align:center; padding: 60px 0 50px; background: #f8f9ff;">
+        <a href="https://sttackedit.streamlit.app/?template=template2" target="_blank"
+           style="display:inline-block; background:#7b2cbf; color:white; text-decoration:none;
+                  padding:22px 60px; font-size:18px; font-weight:700; border-radius:6px;
+                  letter-spacing:1px; text-transform:uppercase; font-family:Inter,sans-serif;
+                  box-shadow: 0 4px 20px rgba(123,44,191,0.4);">
+            ✏️ Editar este Template
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+

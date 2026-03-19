@@ -249,3 +249,17 @@ def render():
     # ========== FIM DO TEMPLATE ==========
     # Lembre-se: Altere apenas o que tem ✅ ALTERE
     # Não mexa no que tem ❌ NÃO ALTERE
+
+    # ========== BOTÃO EDITAR TEMPLATE ==========
+    st.markdown("""
+    <div style="text-align:center; padding: 60px 0 50px; background: #f8f9ff;">
+        <a href="https://sttackedit.streamlit.app/?template=template11" target="_blank"
+           style="display:inline-block; background:#7b2cbf; color:white; text-decoration:none;
+                  padding:22px 60px; font-size:18px; font-weight:700; border-radius:6px;
+                  letter-spacing:1px; text-transform:uppercase; font-family:Inter,sans-serif;
+                  box-shadow: 0 4px 20px rgba(123,44,191,0.4);">
+            ✏️ Editar este Template
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+
