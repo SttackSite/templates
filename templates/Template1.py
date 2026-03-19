@@ -544,9 +544,8 @@ def render():
         <p>&copy; 2026 Agência Digital. Todos os direitos reservados.</p>
     </div>
     """
-    st.markdown(footer_html, unsafe_allow_html=True)
 
-# ========== BOTÃO EDITAR TEMPLATE ==========
+    # ========== BOTÃO EDITAR TEMPLATE ==========
 st.markdown("""
 <div style="text-align:center; padding: 60px 0 40px;">
     <a href="https://sttackedit.streamlit.app/?template=template1" target="_blank"
@@ -557,3 +556,4 @@ st.markdown("""
     </a>
 </div>
 """, unsafe_allow_html=True)
+    st.markdown(footer_html, unsafe_allow_html=True)
