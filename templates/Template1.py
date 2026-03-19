@@ -545,3 +545,15 @@ def render():
     </div>
     """
     st.markdown(footer_html, unsafe_allow_html=True)
+
+# ========== BOTÃO EDITAR TEMPLATE ==========
+st.markdown("""
+<div style="text-align:center; padding: 60px 0 40px;">
+    <a href="https://sttackedit.streamlit.app/?template=template1" target="_blank"
+       style="display:inline-block; background:#7b2cbf; color:white; text-decoration:none;
+              padding:22px 60px; font-size:18px; font-weight:700; border-radius:6px;
+              letter-spacing:1px; text-transform:uppercase;">
+        ✏️ Editar este Template
+    </a>
+</div>
+""", unsafe_allow_html=True)
